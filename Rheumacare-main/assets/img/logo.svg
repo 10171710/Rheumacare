@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="RheumaCare logo">
+  <defs>
+    <linearGradient id="rcg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12a594"/>
+      <stop offset="1" stop-color="#0b5f5b"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#rcg)"/>
+  <circle cx="32" cy="26" r="7" fill="#fff" opacity=".95"/>
+  <path d="M32 35c-6 0-11 4-11 9v3h22v-3c0-5-5-9-11-9z" fill="#fff" opacity=".95"/>
+  <path d="M43 16c4 2 7 6 7 11" stroke="#ffd9a8" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <circle cx="46" cy="30" r="2.6" fill="#ffd9a8"/>
+</svg>
