@@ -1,0 +1,688 @@
+/* ==========================================================================
+   RHEUMACARE — CONDITIONS TREATED STYLESHEET
+   --------------------------------------------------------------------------
+   Specialized styles for conditions-treated.html:
+     01. Hero & Search Filter Bar
+     02. Interactive Category Tabs & Pills
+     03. Condition Showcase Cards
+     04. Symptom Navigator ("Where Does It Hurt?")
+     05. Window of Opportunity (Early Diagnosis)
+     06. FAQ & Patient Guidance
+     07. Responsive & RTL Overrides
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   01. HERO & SEARCH FILTER BAR
+   -------------------------------------------------------------------------- */
+.cond-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 136px 0 96px;
+  min-height: 720px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--rc-line-strong);
+  background:
+    radial-gradient(920px 520px at 85% -12%, var(--rc-primary-soft), transparent 65%),
+    radial-gradient(780px 480px at -5% 25%, var(--rc-secondary-soft), transparent 60%),
+    var(--rc-bg);
+}
+
+@media (max-width: 991.98px) {
+  .cond-hero {
+    min-height: auto;
+    padding: 124px 0 80px;
+  }
+}
+
+.cond-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--rc-muted);
+  margin-bottom: 1.25rem;
+}
+
+.cond-breadcrumb a {
+  color: var(--rc-muted);
+  transition: color 0.2s ease;
+}
+
+.cond-breadcrumb a:hover {
+  color: var(--rc-primary);
+}
+
+.cond-breadcrumb .sep {
+  opacity: 0.5;
+  font-size: 0.75rem;
+}
+
+.cond-breadcrumb .current {
+  color: var(--rc-primary-deep);
+  font-weight: 700;
+}
+
+.cond-hero h1 {
+  font-size: clamp(2.35rem, 4.6vw, 3.8rem);
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.025em;
+}
+
+.cond-hero .rc-lead {
+  font-size: 1.15rem;
+  max-width: 660px;
+  line-height: 1.7;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Instant Search Input */
+.cond-search-box {
+  position: relative;
+  max-width: 620px;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cond-search-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--rc-surface);
+  border: 1px solid var(--rc-line-strong);
+  border-radius: 999px;
+  padding: 0.45rem 0.65rem 0.45rem 1.4rem;
+  box-shadow: var(--rc-shadow-sm);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cond-search-input-wrap:focus-within {
+  border-color: var(--rc-primary);
+  box-shadow: 0 0 0 0.25rem var(--rc-ring), var(--rc-shadow-sm);
+}
+
+.cond-search-input-wrap i.search-icon {
+  font-size: 1.1rem;
+  color: var(--rc-primary);
+  margin-right: 0.85rem;
+  flex: none;
+}
+
+.cond-search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 1rem;
+  color: var(--rc-ink);
+  font-family: inherit;
+}
+
+.cond-search-input::placeholder {
+  color: var(--rc-muted);
+  opacity: 0.8;
+}
+
+.cond-search-clear {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--rc-muted);
+  cursor: pointer;
+  padding: 0.4rem;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.cond-search-clear:hover {
+  color: var(--rc-secondary);
+}
+
+.cond-search-count {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--rc-primary-deep);
+  background: var(--rc-primary-soft);
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex: none;
+}
+
+/* --------------------------------------------------------------------------
+   02. CATEGORY PILLS & FILTER TABS
+   -------------------------------------------------------------------------- */
+.cond-filter-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.8rem;
+}
+
+.cond-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  background: var(--rc-surface);
+  border: 1px solid var(--rc-line);
+  color: var(--rc-text);
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.cond-filter-btn:hover {
+  border-color: var(--rc-primary);
+  color: var(--rc-primary);
+  transform: translateY(-2px);
+}
+
+.cond-filter-btn.active {
+  background: var(--rc-primary);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 10px 24px -10px var(--rc-ring);
+}
+
+[data-bs-theme="dark"] .cond-filter-btn.active {
+  color: #06211f;
+}
+
+/* --------------------------------------------------------------------------
+   03. CONDITION SHOWCASE CARDS
+   -------------------------------------------------------------------------- */
+.cond-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.75rem;
+}
+
+@media (max-width: 575.98px) {
+  .cond-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cond-card {
+  background: var(--rc-surface);
+  border: 1px solid var(--rc-line);
+  border-radius: var(--rc-radius);
+  padding: 1.75rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.3s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cond-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--rc-line-strong);
+  box-shadow: var(--rc-shadow);
+}
+
+.cond-card-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: calc(var(--rc-radius) - 6px);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  background: var(--rc-primary-soft);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+}
+
+.cond-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.cond-card:hover .cond-card-thumb img {
+  transform: scale(1.06);
+}
+
+.cond-card-thumb .cond-card-cat {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  color: var(--rc-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+}
+
+[data-bs-theme="dark"] .cond-card-thumb .cond-card-cat {
+  background: rgba(10, 47, 53, 0.88);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.cond-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.25rem;
+  min-height: 1.6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cond-card-sub {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--rc-primary-deep);
+  margin-bottom: 1rem;
+  display: block;
+  min-height: 1.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cond-card-desc {
+  font-size: 0.90rem;
+  color: var(--rc-muted);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+  min-height: 4.8rem;
+}
+
+/* Symptoms pill box */
+.cond-symptoms-box {
+  background: var(--rc-surface-2);
+  border: 1px solid var(--rc-line);
+  border-radius: var(--rc-radius-sm);
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.3rem;
+  min-height: 146px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cond-symptoms-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--rc-ink);
+  margin-bottom: 0.55rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cond-symptoms-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.cond-symptoms-list li {
+  font-size: 0.83rem;
+  color: var(--rc-text);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  line-height: 1.35;
+}
+
+.cond-symptoms-list li i {
+  color: var(--rc-primary);
+  font-size: 0.75rem;
+  flex: none;
+  margin-top: 0.18rem;
+}
+
+/* Diagnostics & Treatment badges */
+.cond-treatment-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.4rem;
+  min-height: 60px;
+}
+
+.cond-treatment-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: nowrap;
+}
+
+.cond-treatment-badges span,
+.cond-treatment-badge-row span {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.24rem 0.55rem;
+  border-radius: 6px;
+  background: var(--rc-primary-soft);
+  color: var(--rc-primary-deep);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.3;
+}
+
+/* Card footer with doctor and appointment trigger */
+.cond-card-footer {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rc-line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.cond-specialist-info {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.cond-specialist-info img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--rc-primary);
+}
+
+.cond-specialist-text .name {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--rc-ink);
+  line-height: 1.2;
+}
+
+.cond-specialist-text .role {
+  font-size: 0.72rem;
+  color: var(--rc-muted);
+}
+
+.cond-book-btn {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  background: var(--rc-primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.cond-book-btn:hover {
+  background: var(--rc-primary-deep);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+[data-bs-theme="dark"] .cond-book-btn {
+  color: #06211f;
+}
+
+/* --------------------------------------------------------------------------
+   04. SYMPTOM NAVIGATOR ("WHERE DOES IT HURT?")
+   -------------------------------------------------------------------------- */
+.cond-nav-box {
+  background: var(--rc-surface);
+  border: 1px solid var(--rc-line);
+  border-radius: var(--rc-radius-lg);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  box-shadow: var(--rc-shadow-sm);
+}
+
+.cond-body-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+  border: none;
+}
+
+.cond-body-tab-btn {
+  width: 100%;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  border: 1px solid var(--rc-line);
+  background: var(--rc-surface-2);
+  color: var(--rc-text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  transition: all 0.22s ease;
+}
+
+.cond-body-tab-btn:hover {
+  border-color: var(--rc-primary);
+  color: var(--rc-primary);
+}
+
+.cond-body-tab-btn.active {
+  background: var(--rc-primary);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 10px 24px -10px var(--rc-ring);
+}
+
+[data-bs-theme="dark"] .cond-body-tab-btn.active {
+  color: #06211f;
+}
+
+.cond-body-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.cond-body-item {
+  padding: 1.2rem;
+  border-radius: var(--rc-radius-sm);
+  background: var(--rc-bg);
+  border: 1px solid var(--rc-line);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.cond-body-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--rc-primary);
+}
+
+.cond-body-item h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cond-body-item h4 i {
+  font-size: 0.9em;
+}
+
+.cond-body-item p {
+  font-size: 0.9rem;
+  color: var(--rc-muted);
+  line-height: 1.55;
+  margin-bottom: 0.85rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(0.9rem * 1.55 * 2);
+}
+
+.cond-body-link {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--rc-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+}
+
+.cond-body-link:hover {
+  color: var(--rc-primary-deep);
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   05. WINDOW OF OPPORTUNITY (EARLY DIAGNOSIS)
+   -------------------------------------------------------------------------- */
+.cond-window-card {
+  border-radius: var(--rc-radius-lg);
+  padding: clamp(2rem, 4vw, 3.2rem);
+  background: linear-gradient(145deg, var(--rc-primary-deep), #063c38);
+  color: #eafbf9;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--rc-shadow);
+}
+
+.cond-window-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(550px 320px at 90% 10%, rgba(255, 255, 255, 0.18), transparent 60%),
+              radial-gradient(400px 300px at 0% 100%, rgba(224, 122, 95, 0.32), transparent 60%);
+}
+
+.cond-window-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cond-window-card h2 {
+  color: #fff;
+}
+
+.cond-timeline-step {
+  padding: 1.3rem;
+  border-radius: var(--rc-radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+  height: 100%;
+}
+
+.cond-timeline-step .week {
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ffbe9c;
+  margin-bottom: 0.35rem;
+}
+
+.cond-timeline-step h4 {
+  color: #fff;
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.cond-timeline-step p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   06. EMPTY SEARCH STATE
+   -------------------------------------------------------------------------- */
+.cond-empty-state {
+  display: none;
+  text-align: center;
+  padding: 4.5rem 1.5rem;
+  background: var(--rc-surface);
+  border: 1px dashed var(--rc-line-strong);
+  border-radius: var(--rc-radius);
+  margin-top: 2rem;
+}
+
+.cond-empty-state i {
+  font-size: 3rem;
+  color: var(--rc-muted);
+  opacity: 0.6;
+  margin-bottom: 1.2rem;
+}
+
+.cond-empty-state h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.cond-empty-state p {
+  color: var(--rc-muted);
+  max-width: 480px;
+  margin: 0 auto 1.4rem;
+}
+
+/* --------------------------------------------------------------------------
+   07. RTL OVERRIDES
+   -------------------------------------------------------------------------- */
+[dir="rtl"] .cond-search-input-wrap i.search-icon {
+  margin-right: 0;
+  margin-left: 0.85rem;
+}
+
+[dir="rtl"] .cond-card .rc-more i {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .cond-card-thumb .cond-card-cat {
+  right: auto;
+  left: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   08. RESPONSIVE — Symptom navigator tabs
+   -------------------------------------------------------------------------- */
+@media (max-width: 1199.98px) {
+  .cond-body-tab-btn { font-size: 0.8rem; gap: 0.45rem; padding: 0.7rem 0.8rem; }
+}
+
+@media (max-width: 991.98px) {
+  .cond-body-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 575.98px) {
+  .cond-body-tabs { grid-template-columns: 1fr; }
+}
