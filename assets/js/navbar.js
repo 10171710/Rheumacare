@@ -30,6 +30,29 @@
           <span class="brand-text">Rheuma<em>Care</em></span>
         </a>
 
+        <div class="rc-nav-actions order-2 order-xl-3">
+          <button class="rc-icon-btn" type="button" id="theme-toggle" title="Toggle dark / light mode" aria-label="Toggle theme">
+            <span class="icon-sun"><i class="fa-solid fa-sun"></i></span>
+            <span class="icon-moon"><i class="fa-solid fa-moon"></i></span>
+          </button>
+          <button class="rc-icon-btn d-none d-sm-inline-grid" type="button" id="dir-toggle"
+            title="Toggle RTL / LTR layout" aria-label="Toggle direction">
+            <span id="dir-label">RTL</span>
+          </button>
+          <a class="btn rc-btn d-none d-md-inline-flex" href="tel:+18005550142">
+            <i class="fa-solid fa-phone"></i> Call Now
+          </a>
+          <a class="btn rc-btn d-none d-lg-inline-flex" href="contact.html">
+            <i class="fa-regular fa-calendar-check"></i> Book Appointment
+          </a>
+        </div>
+
+        <button class="navbar-toggler rc-toggler order-3 order-xl-4" type="button" data-bs-toggle="collapse"
+          data-bs-target="#rcMainNav" aria-controls="rcMainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+
         <div class="collapse navbar-collapse order-4 order-xl-2" id="rcMainNav">
           <ul class="navbar-nav mx-auto mb-3 mb-xl-0">
             <li class="nav-item dropdown">
@@ -53,34 +76,18 @@
             <li class="nav-item"><a class="nav-link" href="pricing.html" data-nav="pricing">Pricing</a></li>
             <li class="nav-item"><a class="nav-link" href="blog.html" data-nav="blog">Blog</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.html" data-nav="contact">Contact</a></li>
-            <li class="nav-item d-lg-none mt-3">
-              <a class="btn rc-btn w-100" href="contact.html">Book Appointment</a>
+            <li class="nav-item d-md-none mt-3">
+              <a class="btn rc-btn-ghost w-100" href="tel:+18005550142">
+                <i class="fa-solid fa-phone"></i> Call Now
+              </a>
+            </li>
+            <li class="nav-item d-lg-none mt-2">
+              <a class="btn rc-btn w-100" href="contact.html">
+                <i class="fa-regular fa-calendar-check"></i> Book Appointment
+              </a>
             </li>
           </ul>
         </div>
-
-        <div class="rc-nav-actions order-2 order-xl-3">
-          <button class="rc-icon-btn" type="button" id="theme-toggle" title="Toggle dark / light mode" aria-label="Toggle theme">
-            <span class="icon-sun"><i class="fa-solid fa-sun"></i></span>
-            <span class="icon-moon"><i class="fa-solid fa-moon"></i></span>
-          </button>
-          <button class="rc-icon-btn d-none d-sm-inline-grid" type="button" id="dir-toggle"
-            title="Toggle RTL / LTR layout" aria-label="Toggle direction">
-            <span id="dir-label">RTL</span>
-          </button>
-          <a class="btn rc-btn d-none d-md-inline-flex" href="tel:+18005550142">
-            <i class="fa-solid fa-phone"></i> Call Now
-          </a>
-          <a class="btn rc-btn d-none d-lg-inline-flex" href="contact.html">
-            <i class="fa-regular fa-calendar-check"></i> Book Appointment
-          </a>
-        </div>
-
-        <button class="navbar-toggler rc-toggler order-3 order-xl-4" type="button" data-bs-toggle="collapse"
-          data-bs-target="#rcMainNav" aria-controls="rcMainNav" aria-expanded="false" aria-label="Toggle navigation">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-        </button>
       </div>
     </nav>
   </header>

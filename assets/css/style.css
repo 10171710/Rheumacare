@@ -41,7 +41,16 @@
   --rc-radius:        20px;
   --rc-radius-sm:     14px;
   --rc-radius-lg:     28px;
-  --rc-ring:          rgba(14, 143, 134, 0.28);
+  --rc-ring:          rgba(13, 128, 120, 0.28);
+
+  /* Unified Bootstrap 5.3 brand color tokens */
+  --bs-primary:               #0d8078;
+  --bs-primary-rgb:           13, 128, 120;
+  --bs-primary-text-emphasis: #0d8078;
+  --bs-primary-bg-subtle:     #e0f3f1;
+  --bs-primary-border-subtle: #98ded6;
+  --bs-link-color:            #0d8078;
+  --bs-link-hover-color:      #0a6a64;
 }
 
 [data-bs-theme="dark"] {
@@ -51,7 +60,7 @@
   --rc-surface-2:     #123037;
   --rc-primary:       #3fd6c6;
   --rc-primary-deep:  #2bb9aa;
-  --rc-primary-soft:  rgba(63, 214, 198, 0.14);
+  --rc-primary-soft:  rgba(63, 214, 198, 0.16);
   --rc-secondary:     #f2926f;
   --rc-secondary-soft:rgba(242, 146, 111, 0.16);
   --rc-ink:           #eaf7f6;
@@ -62,7 +71,45 @@
   --rc-shadow:        0 24px 50px -24px rgba(0, 0, 0, 0.75);
   --rc-shadow-sm:     0 12px 28px -18px rgba(0, 0, 0, 0.70);
   --rc-ring:          rgba(63, 214, 198, 0.35);
+
+  /* Unified Bootstrap 5.3 brand color tokens in dark mode */
+  --bs-primary:               #3fd6c6;
+  --bs-primary-rgb:           63, 214, 198;
+  --bs-primary-text-emphasis: #3fd6c6;
+  --bs-primary-bg-subtle:     rgba(63, 214, 198, 0.16);
+  --bs-primary-border-subtle: rgba(63, 214, 198, 0.35);
+  --bs-link-color:            #3fd6c6;
+  --bs-link-hover-color:      #2bb9aa;
 }
+
+/* Explicit Brand Color Consistency Overrides for Bootstrap Utilities */
+.text-primary {
+  color: var(--rc-primary) !important;
+}
+[data-bs-theme="dark"] .text-primary {
+  color: var(--rc-primary) !important;
+}
+.bg-primary {
+  background-color: var(--rc-primary) !important;
+}
+[data-bs-theme="dark"] .bg-primary {
+  background-color: var(--rc-primary) !important;
+  color: #06211f !important;
+}
+.border-primary {
+  border-color: var(--rc-primary) !important;
+}
+.btn-primary {
+  background-color: var(--rc-primary) !important;
+  border-color: var(--rc-primary) !important;
+  color: #ffffff !important;
+}
+[data-bs-theme="dark"] .btn-primary {
+  background-color: var(--rc-primary) !important;
+  border-color: var(--rc-primary) !important;
+  color: #06211f !important;
+}
+
 
 /* --------------------------------------------------------------------------
    02. BASE & TYPOGRAPHY
@@ -82,19 +129,32 @@ body {
   transition: background .3s ease, color .3s ease;
 }
 
-h1, h2, h3, h4, h5, h6, .rc-display {
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.rc-display,
+.rc-section-title,
+.modal-title {
   font-family: "Plus Jakarta Sans", "Inter", sans-serif;
   color: var(--rc-ink);
-  font-weight: 800;
+  font-weight: 600 !important;
   letter-spacing: -0.02em;
-  line-height: 1.15;
+  line-height: 1.2;
 }
 
 a { color: inherit; text-decoration: none; transition: color .2s ease; }
 img { max-width: 100%; display: block; }
 
-p { margin-bottom: 1rem; }
-.rc-lead { font-size: 1.075rem; color: var(--rc-text); }
+body {
+  font-weight: 450;
+}
+
+p, .rc-lead, .lead, .pricing-desc, .rc-step p, .rc-card p, .rc-post p {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 450;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+.rc-lead, .lead { font-size: 1.075rem; color: var(--rc-text); font-weight: 450; }
 
 ::selection { background: var(--rc-primary); color: #fff; }
 
@@ -130,6 +190,7 @@ p { margin-bottom: 1rem; }
 .rc-section-head-split .rc-section-title { margin-bottom: 0; }
 .rc-section-head-split .rc-lead { margin-bottom: 0; }
 .rc-highlight { color: var(--rc-primary); }
+[data-bs-theme="dark"] .rc-highlight { color: var(--rc-primary) !important; }
 
 /* --------------------------------------------------------------------------
    04. BUTTONS, CHIPS & INPUTS
@@ -149,9 +210,18 @@ p { margin-bottom: 1rem; }
 /* Dark theme: --rc-primary is a light teal, so white text is unreadable —
    switch primary buttons to dark ink for sufficient contrast. */
 [data-bs-theme="dark"] .rc-btn,
-[data-bs-theme="dark"] .btn.rc-btn { color: #06211f; }
+[data-bs-theme="dark"] .btn.rc-btn {
+  background: var(--rc-primary) !important;
+  border-color: var(--rc-primary) !important;
+  color: #06211f !important;
+  font-weight: 700;
+}
 [data-bs-theme="dark"] .rc-btn:hover,
-[data-bs-theme="dark"] .btn.rc-btn:hover { color: #06211f; background: var(--rc-primary-deep); }
+[data-bs-theme="dark"] .btn.rc-btn:hover {
+  background: var(--rc-primary-deep) !important;
+  border-color: var(--rc-primary-deep) !important;
+  color: #06211f !important;
+}
 
 .rc-btn-ghost {
   display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
@@ -277,7 +347,11 @@ nav.rc-navbar.fixed-top {
   color: var(--rc-primary);
 }
 .rc-navbar .nav-link.active {
-  color: var(--rc-primary-deep);
+  color: var(--rc-primary);
+  font-weight: 700;
+}
+[data-bs-theme="dark"] .rc-navbar .nav-link.active {
+  color: var(--rc-primary) !important;
 }
 .rc-navbar .nav-link.active::before {
   content: "";
@@ -411,16 +485,17 @@ nav.rc-navbar.fixed-top {
 }
 [data-bs-theme="dark"] .rc-dropdown .dropdown-item.active,
 [data-bs-theme="dark"] .rc-dropdown .dropdown-item:active {
-  background: var(--rc-primary);
+  background: var(--rc-primary) !important;
   color: #06211f !important;
 }
 [data-bs-theme="dark"] .rc-dropdown .dropdown-item.active .di-title,
 [data-bs-theme="dark"] .rc-dropdown .dropdown-item:active .di-title {
   color: #06211f !important;
+  font-weight: 700;
 }
 [data-bs-theme="dark"] .rc-dropdown .dropdown-item.active .di-sub,
 [data-bs-theme="dark"] .rc-dropdown .dropdown-item:active .di-sub {
-  color: rgba(6, 33, 31, 0.88) !important;
+  color: rgba(6, 33, 31, 0.85) !important;
 }
 
 .rc-nav-actions {
@@ -494,7 +569,16 @@ nav.rc-navbar.fixed-top {
   }
   .rc-navbar .nav-link { padding: .7rem .85rem; border-radius: 10px; width: 100%; }
   .rc-navbar .nav-link.active::before { display: none; }
-  .rc-navbar .nav-link.active { background: var(--rc-primary-soft); }
+  .rc-navbar .nav-link.active {
+    background: var(--rc-primary) !important;
+    color: #ffffff !important;
+    font-weight: 700;
+  }
+  [data-bs-theme="dark"] .rc-navbar .nav-link.active {
+    background: var(--rc-primary) !important;
+    color: #06211f !important;
+    font-weight: 700;
+  }
   .rc-dropdown { border: none; box-shadow: none; background: transparent; padding: 0 0 0 .6rem; }
 }
 
@@ -853,8 +937,8 @@ nav.rc-navbar.fixed-top {
 .rc-modal .modal-content { background: var(--rc-surface); border: 1px solid var(--rc-line);
   border-radius: var(--rc-radius); color: var(--rc-text); }
 .rc-modal .modal-header, .rc-modal .modal-footer { border-color: var(--rc-line); }
-.rc-modal .modal-title { color: var(--rc-ink); font-family: "Plus Jakarta Sans", sans-serif; font-weight: 800; }
-.rc-modal .modal-body h6 { color: var(--rc-ink); font-weight: 700; margin-top: 1.25rem; margin-bottom: .5rem; }
+.rc-modal .modal-title { color: var(--rc-ink); font-family: "Plus Jakarta Sans", sans-serif; font-weight: 600; }
+.rc-modal .modal-body h6 { color: var(--rc-ink); font-weight: 600; margin-top: 1.25rem; margin-bottom: .5rem; }
 .rc-modal .modal-body ul { padding-inline-start: 1.2rem; }
 .rc-modal .modal-body a { color: var(--rc-primary); }
 .rc-modal .modal-body a:hover { text-decoration: underline; }
@@ -1092,3 +1176,108 @@ nav.rc-navbar.fixed-top {
 .rc-hero-photo.rc-hero-bg-blog-osteopenia-bones { background-image: url("../img/bg-blog-osteopenia-bones.jpg"); }
 .rc-hero-photo.rc-hero-bg-contact { background-image: url("../img/contact.jpg"); }
 .rc-hero-photo.rc-hero-bg-login { background-image: url("../img/bg-login.jpg"); }
+
+/* --------------------------------------------------------------------------
+   360px & SMALL MOBILE RESPONSIVE FIXES (Navbar scroll padding & Mobile Menu CTA)
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  .rc-header {
+    padding: 0;
+  }
+  .rc-navbar {
+    padding: 0.55rem 0 !important;
+    transition: padding 0.2s ease, box-shadow 0.2s ease;
+  }
+  .rc-header.rc-scrolled .rc-navbar,
+  .rc-navbar.rc-scrolled {
+    padding: 0.55rem 0 !important;
+  }
+  .rc-navbar .rc-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-inline: 12px !important;
+    gap: 0 !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+  .rc-navbar .navbar-brand {
+    font-size: 1.15rem;
+    gap: 0.45rem;
+    margin: 0;
+    flex: 0 0 auto;
+  }
+  .rc-navbar .navbar-brand img {
+    width: 32px;
+    height: 32px;
+  }
+  .rc-nav-actions {
+    gap: 0.35rem;
+    align-items: center;
+    margin-left: auto;
+    flex: 0 0 auto;
+  }
+  .rc-nav-actions .rc-icon-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .rc-toggler {
+    width: 38px;
+    height: 38px;
+    margin-left: 0.4rem;
+    padding: 0;
+    flex: 0 0 auto;
+  }
+  .rc-toggler svg {
+    width: 20px;
+    height: 20px;
+  }
+  .rc-navbar .navbar-collapse {
+    flex-basis: 100% !important;
+    width: 100% !important;
+    margin-top: 0.75rem !important;
+    padding: 1rem 1.15rem !important;
+    border-radius: var(--rc-radius-sm, 14px) !important;
+    background: var(--rc-surface) !important;
+    border: 1px solid var(--rc-line) !important;
+    box-shadow: var(--rc-shadow) !important;
+  }
+  .rc-navbar .navbar-collapse .rc-btn,
+  .rc-navbar .navbar-collapse .rc-btn-ghost {
+    padding: 0.65rem 1.2rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+  }
+  .rc-hero {
+    padding-top: 104px !important;
+    padding-bottom: 60px !important;
+    min-height: auto;
+  }
+  .rc-hero-badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.75rem;
+    white-space: normal;
+  }
+  .rc-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.65rem;
+  }
+  .rc-hero-actions .rc-btn,
+  .rc-hero-actions .rc-btn-ghost {
+    width: 100%;
+    justify-content: center;
+  }
+  .rc-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem 0.8rem;
+    margin-top: 1.5rem;
+  }
+}

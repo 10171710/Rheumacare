@@ -140,7 +140,7 @@
 }
 .h2-tabs .nav-link:hover { color: var(--rc-primary); border-color: var(--rc-primary); }
 .h2-tabs .nav-link.active { background: var(--rc-primary); color: #fff; border-color: transparent; }
-[data-bs-theme="dark"] .h2-tabs .nav-link.active { color: #06211f; }
+[data-bs-theme="dark"] .h2-tabs .nav-link.active { color: #06211f !important; background: var(--rc-primary) !important; border-color: var(--rc-primary) !important; font-weight: 700; }
 .h2-tabpanel {
   background: var(--rc-surface); border: 1px solid var(--rc-line);
   border-radius: var(--rc-radius-lg); padding: clamp(1.4rem, 3vw, 2.4rem);
