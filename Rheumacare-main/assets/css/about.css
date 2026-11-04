@@ -69,6 +69,7 @@
 }
 
 .about-hero h1 {
+  font-weight: 600 !important;
   font-size: clamp(2.35rem, 4.6vw, 3.8rem);
   line-height: 1.14;
   margin-bottom: 1.3rem;
@@ -360,6 +361,7 @@
 }
 
 .about-value-item h4 {
+  font-weight: 600 !important;
   font-size: 1.12rem;
   margin-bottom: 0.5rem;
 }
@@ -466,6 +468,7 @@
 }
 
 .about-timeline-card h4 {
+  font-weight: 600 !important;
   font-size: 1.15rem;
   margin-bottom: 0.5rem;
 }
@@ -555,6 +558,7 @@
 }
 
 .about-doc-content h4 {
+  font-weight: 600 !important;
   font-size: 1.18rem;
   margin-bottom: 0.2rem;
 }
@@ -657,7 +661,7 @@
 
 .about-facility-card h3 {
   font-size: 1.02rem;
-  font-weight: 700;
+  font-weight: 600 !important;
   letter-spacing: -0.015em;
   line-height: 1.25;
   min-height: 1.35rem;
@@ -790,6 +794,7 @@
     padding: 110px 0 60px;
   }
   .about-hero h1 {
+  font-weight: 600 !important;
     font-size: clamp(1.85rem, 7vw, 2.4rem);
   }
   .about-hero .rc-hero-actions {
@@ -859,6 +864,7 @@
     padding: 1.2rem 1rem;
   }
   .about-timeline-card h4 {
+  font-weight: 600 !important;
     font-size: 1.05rem;
   }
   .about-timeline-card p {

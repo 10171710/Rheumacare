@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 360" width="320" height="360" role="img" aria-label="Illustration of joint and musculoskeletal care">
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.28" stroke-width="2">
+    <circle cx="160" cy="180" r="70" stroke-dasharray="4 8"/>
+    <circle cx="160" cy="180" r="112" stroke-dasharray="2 10"/>
+    <circle cx="160" cy="180" r="150" stroke-opacity="0.14"/>
+  </g>
+
+  <g stroke="#ffffff" stroke-opacity="0.92" stroke-width="8" stroke-linecap="round" fill="none">
+    <path d="M160 96v108"/>
+    <path d="M160 120 L108 158"/>
+    <path d="M160 120 L212 158"/>
+    <path d="M160 200 L120 292"/>
+    <path d="M160 200 L200 292"/>
+  </g>
+
+  <circle cx="160" cy="64" r="26" fill="#eafbf9"/>
+
+  <g fill="#ffd2b3" stroke="#0a6a64" stroke-width="3">
+    <circle cx="160" cy="120" r="9"/>
+    <circle cx="108" cy="158" r="9"/>
+    <circle cx="212" cy="158" r="9"/>
+    <circle cx="160" cy="200" r="9"/>
+    <circle cx="120" cy="292" r="9"/>
+    <circle cx="200" cy="292" r="9"/>
+  </g>
+
+  <g fill="#ffffff" fill-opacity="0.85">
+    <circle cx="98" cy="164" r="5"/>
+    <circle cx="222" cy="164" r="5"/>
+    <circle cx="110" cy="300" r="5"/>
+    <circle cx="210" cy="300" r="5"/>
+  </g>
+
+  <path d="M40 232 h40 l14 -30 l20 58 l16 -40 l14 12 h42" fill="none" stroke="#ffd2b3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+</svg>
